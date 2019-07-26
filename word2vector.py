@@ -1,17 +1,8 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-import os
+from spark_session import spark
 from pyspark.sql import SparkSession
 from pyspark.ml.feature import Word2Vec
-
-os.environ['SPARK_HOME'] = '/usr/local/Cellar/apache-spark/spark-2.4.3-bin-hadoop2.7'
-os.environ["PYSPARK_PYTHON"] = "/usr/local/bin/python3.7"
-
-spark = SparkSession \
-    .builder \
-    .appName("pysparkpro") \
-    .config("spark.some.config.option", "some-value") \
-    .getOrCreate()
 
 # Input data: Each row is a bag of words from a sentence or document.
 documentDF = spark.createDataFrame([
